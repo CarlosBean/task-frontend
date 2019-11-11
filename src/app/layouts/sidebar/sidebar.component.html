@@ -1,0 +1,33 @@
+<div class="sidebar">
+  <div class="sidebar-user">
+    <div class="sidebar-user-info" (click)="menuToggled = !menuToggled">
+      <div class="avatar"><span>CB</span></div>
+      <div class="name">
+        <h6 class="mb-1">Carlos Andres</h6>
+        <p class="light-text m-0 ">Benavides De La cruz</p>
+      </div>
+      <span>
+        <i
+          class="fas fa-angle-right fa-sm fa-fw"
+          [class.fa-rotate-90]="menuToggled"
+        ></i>
+      </span>
+    </div>
+    <ul class="sidebar-user-menu" [class.open]="menuToggled">
+      <li *ngFor="let option of accountMenu" [routerLink]="option.route">
+        {{ option.title }} <i class="{{ option.icon }} fa-sm fa-fw"></i>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidebar-company">
+    <h3 class="mb-4">Your Company</h3>
+    <h6>Goodyear</h6>
+    <p class="light-text">Lorem ipsum dolor sit amet.</p>
+    <ul class="sidebar-company-menu">
+      <li *ngFor="let option of generalMenu" [routerLink]="option.route">
+        {{ option.title }} <i class="{{ option.icon }} fa-sm fa-fw"></i>
+      </li>
+    </ul>
+  </div>
+</div>

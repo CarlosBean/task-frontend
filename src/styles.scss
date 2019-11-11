@@ -1,1 +1,157 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/styles/normalize.css';
+@import 'assets/styles/variables.css';
+@import 'assets/styles/variables';
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.light-text {
+  color: $secondary;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+/* SPACES UTILS */
+@each $space-k, $space-v in $spaces {
+  @each $size-k, $size-v in $space-sizes {
+    .#{$space-k}-#{$size-k} {
+      #{$space-v}: #{$size-v};
+    }
+
+    @each $side-k, $side-v in $space-sides {
+      .#{$space-k}#{$side-k}-#{$size-k} {
+        #{$space-v}-#{$side-v}: #{$size-v};
+      }
+    }
+  }
+}
+
+/* HEADERS UTILS */
+@each $head-k, $head-v in $headers {
+  #{$head-k} {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    font-size: #{$head-v};
+    color: #{$gray-800};
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+/* MEASURES UTILS */
+@each $prefix, $attr in $measures {
+  @each $size in $measure-sizes {
+    .#{$prefix}-#{$size} {
+      @if $size== 'auto' {
+        #{$attr}: #{$size} !important;
+      } @else {
+        #{$attr}: #{$size}+ '%' !important;
+      }
+    }
+  }
+}
+
+/* BUTTONS */
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: $primary;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: inherit;
+  text-transform: capitalize;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border: transparent;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover,
+input[type='submit']:hover,
+input[type='reset']:hover,
+input[type='button']:hover,
+button:focus,
+input[type='submit']:focus,
+input[type='reset']:focus,
+input[type='button']:focus {
+  outline: 0;
+}
+
+button:active,
+input[type='submit']:focus,
+input[type='reset']:focus,
+input[type='button']:focus {
+  transform: scale(0.98);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+
+button:disabled,
+.btn-disabled {
+  background: var(--gray-400) !important;
+  color: var(--gray-700) !important;
+  box-shadow: none;
+  cursor: default;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-border {
+  border-radius: 20px;
+}
+
+.btn-lg {
+  height: 42px;
+  width: 180px;
+}
+
+@each $class, $bg in $btns {
+  .#{$class} {
+    background: $bg;
+    color: #{$white};
+    box-shadow: var(--shw-1);
+  }
+}

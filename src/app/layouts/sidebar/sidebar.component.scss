@@ -1,0 +1,94 @@
+.sidebar {
+  i {
+    font-size: 1rem;
+  }
+
+  &-user {
+    border-bottom: 1px solid var(--outline);
+
+    &-info {
+      display: grid;
+      grid-template-columns: 85px 1fr 60px;
+      align-items: center;
+      height: 105px;
+      max-height: 105px;
+
+      .avatar {
+        justify-self: center;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        background-color: var(--success);
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+
+      > span {
+        text-align: center;
+      }
+    }
+
+    &-menu {
+      background-color: var(--white);
+      overflow: hidden;
+      transition: max-height 0.3s;
+      max-height: 0;
+      padding-left: 0;
+      z-index: 200;
+      position: fixed;
+      width: 25%;
+      margin: 0;
+      box-shadow: var(--shb-1);
+
+      li {
+        display: block;
+        padding: 12px 0;
+        margin: 0 1.5em;
+        text-decoration: none;
+        border-bottom: 1px solid var(--outline);
+        color: var(--dark);
+        font-size: 14px;
+        position: relative;
+        outline: none;
+        cursor: pointer;
+
+        i {
+          float: right;
+          margin-bottom: 1.5em;
+        }
+      }
+
+      li:last-child {
+        border: none;
+      }
+    }
+  }
+
+  &-company {
+    margin: 4em 0 0 2em;
+
+    &-menu {
+      margin-top: 3em;
+      list-style: none;
+      padding-left: 20px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 40px 0 0 40px;
+        color: white;
+        background-color: var(--success);
+        padding: 0.5em 1.25em;
+        margin-bottom: 1em;
+        outline: 0;
+      }
+    }
+  }
+}
+
+.open {
+  max-height: 100%;
+}

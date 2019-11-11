@@ -1,0 +1,44 @@
+<div class="header-container">
+  <div class="main-header">
+    <h5>Registered Users</h5>
+    <div class="search-input">
+      <i class="search-icn fas fa-search fa-sm fa-fw"></i>
+      <input
+        [(ngModel)]="searchInput"
+        type="text"
+        placeholder="Search account"
+      />
+      <i
+        *ngIf="searchInput"
+        (click)="searchInput = ''"
+        class="times-icn fas fa-times fa-sm fa-fw"
+      ></i>
+    </div>
+    <button class="btn-degree btn-lg btn-border">
+      <i class="pull-left fas fa-plus-circle fa-lg fa-fw"></i>
+      <span>NEW</span>
+    </button>
+  </div>
+
+  <div class="button-divider">
+    <div class="aux-container">
+      <button
+        *ngFor="let btn of btns"
+        class="btn-success"
+        [class.btn-disabled]="!btn.selected"
+        (click)="selectBtn(btn)"
+      >
+        {{ btn.name }}
+      </button>
+    </div>
+
+    <div class="aux-container">
+      <button class="btn-warning btn-fab">
+        <i class="fas fa-user-alt-slash fa-fw"></i>
+      </button>
+      <button class="btn-danger btn-fab">
+        <i class="fas fa-trash fa-fw"></i>
+      </button>
+    </div>
+  </div>
+</div>

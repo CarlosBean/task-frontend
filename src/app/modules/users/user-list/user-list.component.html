@@ -1,0 +1,7 @@
+<div class="header-container">
+  <div class="main-container">
+    <ng-container *ngFor="let user of users">
+      <app-card [user]="user" (action)="executeAction($event)"></app-card>
+    </ng-container>
+  </div>
+</div>

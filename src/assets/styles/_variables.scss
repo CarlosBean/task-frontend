@@ -1,0 +1,74 @@
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #ecf0f1;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #b4bcc2;
+$gray-600: #95a5a6;
+$gray-700: #7b8a8b;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+$blue: #2c3e50;
+$red: #e74c3c;
+$orange: #fd7e14;
+$yellow: #f39c12;
+$green: #18bc9c;
+$cyan: #3498db;
+$green-accent: #00e29e;
+
+$primary: $blue;
+$secondary: $gray-600;
+$success: $green;
+$info: $cyan;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-200;
+$dark: $gray-700;
+$gradient-color: -webkit-linear-gradient(100deg, $green 0%, $green-accent 80%);
+
+$btns: (
+  'btn-primary' $primary,
+  'btn-secondary' $secondary,
+  'btn-success' $success,
+  'btn-info' $info,
+  'btn-danger' $danger,
+  'btn-warning' $warning,
+  'btn-degree' $gradient-color
+);
+
+$spaces: (
+  p: 'padding',
+  m: 'margin'
+);
+$space-sides: (
+  t: 'top',
+  b: 'bottom',
+  r: 'right',
+  l: 'left'
+);
+$space-sizes: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem
+);
+
+$headers: (
+  h1: 2.5rem,
+  h2: 2rem,
+  h3: 1.75rem,
+  h4: 1.5rem,
+  h5: 1.25rem,
+  h6: 1rem
+);
+
+$measures: (
+  w: 'width',
+  h: 'heigth'
+);
+
+$measure-sizes: (25, 50, 75, 100, 'auto');
