@@ -1,7 +1,11 @@
+<app-topbar
+  (action)="getTopbarEvt($event)"
+  [config]="configTopbar"
+></app-topbar>
 <div class="header-container">
   <div class="main-container">
-    <ng-container *ngFor="let user of users">
-      <app-card [user]="user" (action)="executeAction($event)"></app-card>
+    <ng-container *ngFor="let user of users; let i = index">
+      <app-card [user]="user" (action)="getCardEvt($event, i)"></app-card>
     </ng-container>
   </div>
 </div>

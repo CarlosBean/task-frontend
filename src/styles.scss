@@ -3,9 +3,10 @@
 @import 'assets/styles/variables.css';
 @import 'assets/styles/variables';
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700');
+@import 'theme.scss';
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif !important;
   font-size: 1rem;
   font-weight: 400;
 }
@@ -27,6 +28,19 @@ p {
   float: left;
 }
 
+/* MEASURES UTILS */
+@each $prefix, $attr in $measures {
+  @each $size in $measure-sizes {
+    .#{$prefix}-#{$size} {
+      @if $size== 'auto' {
+        #{$attr}: #{$size} !important;
+      } @else {
+        #{$attr}: #{$size}+ '%' !important;
+      }
+    }
+  }
+}
+
 /* SPACES UTILS */
 @each $space-k, $space-v in $spaces {
   @each $size-k, $size-v in $space-sizes {
@@ -42,7 +56,7 @@ p {
   }
 }
 
-/* HEADERS UTILS */
+/* HEADERS */
 @each $head-k, $head-v in $headers {
   #{$head-k} {
     margin-top: 0;
@@ -63,19 +77,6 @@ h4,
 h5,
 h6 {
   font-weight: 600;
-}
-
-/* MEASURES UTILS */
-@each $prefix, $attr in $measures {
-  @each $size in $measure-sizes {
-    .#{$prefix}-#{$size} {
-      @if $size== 'auto' {
-        #{$attr}: #{$size} !important;
-      } @else {
-        #{$attr}: #{$size}+ '%' !important;
-      }
-    }
-  }
 }
 
 /* BUTTONS */
@@ -154,4 +155,37 @@ button:disabled,
     color: #{$white};
     box-shadow: var(--shw-1);
   }
+}
+
+/* CHECKBOX */
+input[type='checkbox'] {
+  appearance: none;
+  font-size: 20px;
+  margin: 0;
+  color: inherit;
+  outline: none;
+  font-family: 'Font Awesome 5 Pro';
+  transition: 300ms ease-out;
+
+  &::before {
+    content: '\f0c8'; // square
+    display: inline-block;
+    text-align: center;
+  }
+
+  &:checked::before {
+    content: '\f14a'; // check-square
+    color: var(--green-accent);
+    font-weight: 900;
+    transition: 200ms ease-out;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

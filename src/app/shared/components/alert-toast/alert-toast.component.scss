@@ -1,0 +1,51 @@
+.custom-alert {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: var(--shadow-panel);
+    border-radius: 50px;
+    -o-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    width: 30.5rem;
+    height: 80px;
+    z-index: 200;
+}
+
+.success {
+    color: var(--white);
+    background-color: var(--success);
+}
+
+.danger {
+    color: var(--white);
+    background-color: var(--danger);
+}
+
+.warning {
+    color: var(--dark);
+    background-color: var(--warning);
+}
+
+.info {
+    color: var(--white);
+    background-color: var(--info);
+}
+
+.icon-alert {
+    margin: 0 0.5em 0 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+}
+
+.info-alert h3,
+.info-alert p {
+    margin: 0.5em 0;
+}

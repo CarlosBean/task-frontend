@@ -35,29 +35,6 @@
       background-color: inherit !important;
     }
   }
-
-  input[type='checkbox'] {
-    appearance: none;
-    font-size: 20px;
-    margin: 0;
-    color: inherit;
-    outline: none;
-    font-family: 'Font Awesome 5 Pro';
-    transition: 300ms ease-out;
-
-    &::before {
-      content: '\f0c8'; // square
-      display: inline-block;
-      text-align: center;
-    }
-
-    &:checked::before {
-      content: '\f14a'; // check-square
-      color: var(--green-accent);
-      font-weight: 900;
-      transition: 200ms ease-out;
-    }
-  }
 }
 
 .card-checked {

@@ -1,0 +1,31 @@
+:host {
+  background-color: var(--gray-100) !important;
+}
+
+.header-banner {
+  height: 127px;
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.inner-container {
+  padding: 2em 6em;
+  background-color: var(--white) !important;
+
+  h4 {
+    color: var(--green);
+    margin-bottom: 1em;
+  }
+}
+
+::ng-deep app-dynamic-form form {
+  display: grid;
+  grid: auto / 1fr 1fr;
+  grid-gap: 15px 30px;
+  grid-template-areas:
+    'username name'
+    'email email'
+    'website website'
+    'food sport'
+    'submit submit';
+}

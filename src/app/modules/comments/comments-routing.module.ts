@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: CommentListComponent,
-    data: { title: 'Comments' }
+    data: { title: 'Comments', animation: 'CommentList' }
   }
 ];
 
