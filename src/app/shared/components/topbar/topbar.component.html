@@ -1,5 +1,5 @@
-<div class="header-container">
-  <div class="main-header">
+<div class="header-container fx fx-col">
+  <div class="main-header fx j-between a-center">
     <h5>{{ config.title | titlecase }}</h5>
     <app-search-input [placeholder]="config.placeholder"></app-search-input>
 
@@ -12,7 +12,7 @@
     </button>
   </div>
 
-  <div class="button-divider">
+  <div class="button-divider fx a-center j-between">
     <div class="aux-container">
       <button
         *ngFor="let btn of config.menus"

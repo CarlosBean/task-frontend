@@ -16,8 +16,61 @@ p {
   margin-bottom: 1rem;
 }
 
+.fx {
+  display: flex;
+}
+
+.fx-col {
+  flex-flow: column;
+}
+
+.fx-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.j-around {
+  justify-content: space-around;
+}
+
+.j-between {
+  justify-content: space-between;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+.a-center {
+  align-items: center;
+}
+
+.a-end {
+  align-items: flex-end;
+}
+
+.a-start {
+  align-items: flex-start;
+}
+
 .light-text {
   color: $secondary;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+.text-upper {
+  text-transform: uppercase;
+}
+
+.text-link {
+  color: var(--green);
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .pull-right {
@@ -155,6 +208,12 @@ button:disabled,
     color: #{$white};
     box-shadow: var(--shw-1);
   }
+
+  @if $class== 'btn-degree' {
+    .#{$class} {
+      text-transform: uppercase;
+    }
+  }
 }
 
 /* CHECKBOX */
@@ -179,13 +238,4 @@ input[type='checkbox'] {
     font-weight: 900;
     transition: 200ms ease-out;
   }
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }

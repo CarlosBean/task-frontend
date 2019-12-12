@@ -17,6 +17,9 @@
       <li *ngFor="let option of accountMenu" [routerLink]="option.route">
         {{ option.title }} <i class="{{ option.icon }} fa-sm fa-fw"></i>
       </li>
+      <li (click)="logout()">
+        Logout <i class="fas fa-power-off fa-sm fa-fw"></i>
+      </li>
     </ul>
   </div>
 

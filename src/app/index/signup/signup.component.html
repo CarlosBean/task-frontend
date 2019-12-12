@@ -1,0 +1,72 @@
+<h1 class="mb-3">Sign up</h1>
+<p class="light-text mb-5">Create your account now</p>
+<form name="signupForm" novalidate [formGroup]="signupForm">
+  <mat-form-field class="w-100 mb-3" floatLabel="always">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      placeholder="Enter your name"
+      formControlName="name"
+      autocomplete="off"
+    />
+
+    <!-- <mat-error *ngIf="signupForm.get('name').errors?.required">
+      Email is <strong>required</strong>
+    </mat-error> -->
+
+    <!-- <mat-error *ngIf="signupForm.get('name').errors?.name">
+      Invalid email address
+    </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3" floatLabel="always">
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      placeholder="Enter your email"
+      formControlName="email"
+      autocomplete="off"
+    />
+
+    <!-- <mat-error *ngIf="signupForm.get('email').errors?.required">
+          Email is <strong>required</strong>
+        </mat-error> -->
+
+    <!-- <mat-error *ngIf="signupForm.get('email').errors?.email">
+          Invalid email address
+        </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field class="w-100 mb-3" floatLabel="always">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Enter your password"
+      [type]="hide ? 'password' : 'text'"
+      formControlName="password"
+      autocomplete="off"
+    />
+    <button
+      type="button"
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <i *ngIf="!hide" class="fas fa-eye fa-sm fa-fw"></i>
+      <i *ngIf="hide" class="fas fa-eye-slash fa-sm fa-fw"></i>
+    </button>
+
+    <!-- <mat-error *ngIf="signupForm.get('password').errors?.required">
+      Password is <strong>required</strong>
+    </mat-error> -->
+  </mat-form-field>
+
+  <div class="fx-center fx-col">
+    <button class="btn-degree btn-lg">Sign up</button>
+    <button type="button" [routerLink]="['/login']" class="text-link">
+      i have an account
+    </button>
+  </div>
+</form>

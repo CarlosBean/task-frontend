@@ -4,12 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './layouts/home/home.component';
+import { IndexComponent } from './index/index/index.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, SidebarComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule],
+  declarations: [AppComponent, SidebarComponent, HomeComponent, IndexComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

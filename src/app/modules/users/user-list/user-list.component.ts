@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { fadeInOut } from 'src/app/animations';
 
 @Component({
@@ -40,12 +40,12 @@ export class UserListComponent {
 
   selected = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   getTopbarEvt(action: string) {
     switch (action) {
       case 'new':
-        this.router.navigateByUrl('/users/new');
+        this.router.navigate(['new'], { relativeTo: this.route });
         break;
 
       default:
