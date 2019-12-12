@@ -34,14 +34,14 @@ export class SidebarComponent implements OnInit {
       route: 'users'
     },
     {
-      title: 'Manage Posts',
+      title: 'Manage Proyects',
       icon: 'fas fa-user',
-      route: 'posts'
+      route: 'proyects'
     },
     {
-      title: 'Manage Comments',
+      title: 'Manage Tasks',
       icon: 'fas fa-user',
-      route: 'comments'
+      route: 'tasks'
     },
     {
       title: 'Settings',

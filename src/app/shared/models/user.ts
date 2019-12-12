@@ -1,25 +1,30 @@
 interface ISuscription {
-  name: string;
-  fee: string;
-  terms: string;
-  productId: string;
-  termId: string;
+  cedula: string;
+  nombre: string;
+  email: string;
+  password: string;
+  estado: boolean;
+  eliminado: boolean;
 }
 
 export interface IUser {
   id?: string;
-  status?: string;
-  name?: string;
-  quantity?: number;
-  subscription?: ISuscription;
+  cedula?: string;
+  nombre?: string;
+  email?: string;
+  password?: string;
+  estado?: boolean;
+  eliminado?: boolean;
 }
 
 export class User implements IUser {
   constructor(
     public id?: string,
-    public status?: string,
-    public name?: string,
-    public quantity?: number,
-    public subscription?: ISuscription
+    public cedula?: string,
+    public nombre?: string,
+    public email?: string,
+    public password?: string,
+    public estado?: boolean,
+    public eliminado?: boolean,
   ) {}
 }

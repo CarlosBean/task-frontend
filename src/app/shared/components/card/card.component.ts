@@ -8,12 +8,13 @@ import { IUser } from '../../models/user';
     <div class="card" [class.card-checked]="user.checked">
       <div class="card-body">
         <div>
-          <p class="mb-1">{{ user.id }}</p>
-          <h6 class="m-0">{{ user.name }}</h6>
+          <p class="mb-1">{{ user.cedula }}</p>
+          <h6 class="m-0">{{ user.nombre }}</h6>
         </div>
         <div>
-          <p class="light-text mb-1">{{ user.quantity }} users</p>
-          <small>{{ user.status ? 'active' : 'inactive' }}</small>
+          <p class="light-text mb-1">{{ user.quantity }} Proyectos</p>
+          <p class="light-text mb-1">{{ user.quantity }} Tareas</p>
+          <small>{{ user.estado ? 'activo' : 'inactivo' }}</small>
         </div>
       </div>
       <div class="card-options">

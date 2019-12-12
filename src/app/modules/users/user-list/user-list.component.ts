@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fadeInOut } from 'src/app/animations';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
-  users = [
-    { id: 1, name: 'Carlos De la Cruz', quantity: 10, status: true },
-    { id: 2, name: 'Andres Gonzales', quantity: 15, status: true },
-    { id: 3, name: 'Didier Perez', quantity: 8, status: true },
-    { id: 4, name: 'Ofelia Nuñez', quantity: 22, status: true }
-  ];
+export class UserListComponent implements OnInit {
+  users = [];
 
   configTopbar = {
     title: 'registered users',
@@ -40,7 +36,16 @@ export class UserListComponent {
 
   selected = [];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(public usersService: UsersService, private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.usersService.getAll().subscribe((res: any) => {
+      console.log('usuarios', res);
+      this.users = res.content;
+    }, err => {
+      console.log(err);
+    });
+  }
 
   getTopbarEvt(action: string) {
     switch (action) {
@@ -62,9 +67,15 @@ export class UserListComponent {
           : this.selected.filter(card => card !== evt.id);
         break;
       case 'delete':
-        this.users.splice(index, 1);
+        this.usersService.delete(evt.id).subscribe((res: any) => {
+          console.log('DELETE USER SUCCESS', res);
+          this.users.splice(index, 1);
+        }, err => {
+          console.log('ERROR DELETE', err);
+        });
         break;
       case 'edit':
+          this.router.navigate(['update', evt.id], { relativeTo: this.route });
         console.log('edit');
         break;
       default:
