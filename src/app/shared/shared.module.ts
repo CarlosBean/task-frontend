@@ -22,7 +22,7 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
     FormInputComponent,
     FormButtonComponent,
     FormSelectComponent,
-    AlertToastComponent,
+    //AlertToastComponent,
     DynamicFieldDirective
   ],
   imports: [
@@ -40,14 +40,14 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
     MaterialModule,
     CardComponent,
     TopbarComponent,
-    DynamicFormComponent,
-    AlertToastComponent
+    DynamicFormComponent
+    //AlertToastComponent
   ],
   entryComponents: [
     FormInputComponent,
     FormButtonComponent,
-    FormSelectComponent,
-    AlertToastComponent
+    FormSelectComponent
+    //AlertToastComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

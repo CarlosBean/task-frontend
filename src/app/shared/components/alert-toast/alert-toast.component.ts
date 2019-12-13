@@ -10,7 +10,7 @@ import { ICustomAlert } from '../../models/custom-alert.model';
         <i class="fas {{ config.icon }} fa-3x fa-fw"></i>
       </span>
       <div class="info-alert">
-        <h3>{{ config.title }}</h3>
+        <h6 class="text-upper">{{ config.title }}</h6>
         <p>{{ config.text }}</p>
       </div>
     </div>

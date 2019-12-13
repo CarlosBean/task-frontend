@@ -5,7 +5,8 @@ import { DynamicFormComponent } from 'src/app/shared/components/dynamic-form/dyn
 import { IUser } from 'src/app/shared/models/user';
 import { slideRightInOut } from 'src/app/animations';
 import { UsersService } from '../users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertToastService } from 'src/app/shared/components/alert-toast/alert-toast.service';
 
 @Component({
   selector: 'app-user-update',
@@ -15,7 +16,12 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <div class="header-banner"></div>
     <div class="inner-container">
-      <h4>Add Users</h4>
+      <div class="fx j-between a-center">
+        <h4>Add Users</h4>
+        <button (click)="goBack()">
+          <i class="fas fa-times fa-lg fa-fw text-green"></i>
+        </button>
+      </div>
       <app-dynamic-form
         [config]="config"
         #form="dynamicForm"
@@ -65,13 +71,17 @@ export class UserUpdateComponent implements AfterViewInit {
     }
   ];
 
-  constructor(private userService: UsersService, private route: ActivatedRoute) {
-    this.route.data.subscribe(({ user }) => this.user = user);
+  constructor(
+    public alert: AlertToastService,
+    private userService: UsersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.route.data.subscribe(({ user }) => (this.user = user));
   }
 
   ngAfterViewInit() {
-    if(this.user)
-    this.updateForm(this.user);
+    if (this.user) this.updateForm(this.user);
   }
 
   updateForm(user: any) {
@@ -88,8 +98,18 @@ export class UserUpdateComponent implements AfterViewInit {
   }
 
   save() {
-    if (!this.form.valid) { return; }
+    if (!this.form.valid) {
+      return;
+    }
     // const method = this.post.id ? 'update' : 'update';
-    this.userService.create(this.buildReqBody()).subscribe();
+    this.userService.create(this.buildReqBody()).subscribe((res: any) => {
+      console.log(res);
+      this.alert.success('Operación Exitosa', `Usuario creado correctamente`);
+      this.goBack();
+    });
+  }
+
+  goBack() {
+    window.history.back();
   }
 }

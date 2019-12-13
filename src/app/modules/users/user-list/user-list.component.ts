@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { fadeInOut } from 'src/app/animations';
 import { UsersService } from '../users.service';
+import { AlertToastService } from 'src/app/shared/components/alert-toast/alert-toast.service';
 
 @Component({
   selector: 'app-user-list',
@@ -36,15 +37,23 @@ export class UserListComponent implements OnInit {
 
   selected = [];
 
-  constructor(public usersService: UsersService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    public alert: AlertToastService,
+    public usersService: UsersService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.usersService.getAll().subscribe((res: any) => {
-      console.log('usuarios', res);
-      this.users = res.content;
-    }, err => {
-      console.log(err);
-    });
+    this.usersService.getAll().subscribe(
+      (res: any) => {
+        console.log('usuarios', res);
+        this.users = res.content;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   getTopbarEvt(action: string) {
@@ -67,15 +76,21 @@ export class UserListComponent implements OnInit {
           : this.selected.filter(card => card !== evt.id);
         break;
       case 'delete':
-        this.usersService.delete(evt.id).subscribe((res: any) => {
-          console.log('DELETE USER SUCCESS', res);
-          this.users.splice(index, 1);
-        }, err => {
-          console.log('ERROR DELETE', err);
-        });
+        this.usersService.delete(evt.id).subscribe(
+          (res: any) => {
+            this.alert.success(
+              'Operación exitosa',
+              'Usuario eliminado correctamente'
+            );
+            this.users.splice(index, 1);
+          },
+          err => {
+            console.log('ERROR DELETE', err);
+          }
+        );
         break;
       case 'edit':
-          this.router.navigate(['update', evt.id], { relativeTo: this.route });
+        this.router.navigate(['update', evt.id], { relativeTo: this.route });
         console.log('edit');
         break;
       default:
