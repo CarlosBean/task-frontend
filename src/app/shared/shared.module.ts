@@ -9,9 +9,10 @@ import { MaterialModule } from './material.module';
 import { FormInputComponent } from './components/form-input/form-input.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
-import { AlertToastComponent } from './components/alert-toast/alert-toast.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.directive';
+import { FormDatepickerComponent } from './components/form-datepicker/form-datepicker.component';
+import { FormSliderComponent } from './components/form-slider/form-slider.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
     FormInputComponent,
     FormButtonComponent,
     FormSelectComponent,
+    FormDatepickerComponent,
+    FormSliderComponent,
     //AlertToastComponent,
     DynamicFieldDirective
   ],
@@ -46,7 +49,9 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
   entryComponents: [
     FormInputComponent,
     FormButtonComponent,
-    FormSelectComponent
+    FormSelectComponent,
+    FormDatepickerComponent,
+    FormSliderComponent
     //AlertToastComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

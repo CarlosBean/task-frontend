@@ -13,10 +13,9 @@ import { FieldConfig } from '../../models/field-config.interface';
       [style.grid-area]="config.name"
     >
       <mat-label>{{ config.label }}</mat-label>
-      <mat-select [formControlName]="config.name" disableRipple>
-        <mat-option>None</mat-option>
+      <mat-select [formControlName]="config.name" disableRipple multiple>
         <mat-option *ngFor="let option of config.options" [value]="option">
-          {{ option }}
+          {{ option.nombre }}
         </mat-option>
       </mat-select>
 

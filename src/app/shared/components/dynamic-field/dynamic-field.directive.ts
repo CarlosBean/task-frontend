@@ -15,11 +15,15 @@ import { Field } from '../../models/field.interface';
 import { FieldConfig } from '../../models/field-config.interface';
 import { FormButtonComponent } from '../form-button/form-button.component';
 import { FormSelectComponent } from '../form-select/form-select.component';
+import { FormDatepickerComponent } from '../form-datepicker/form-datepicker.component';
+import { FormSliderComponent } from '../form-slider/form-slider.component';
 
 const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
   input: FormInputComponent,
-  select: FormSelectComponent
+  select: FormSelectComponent,
+  date: FormDatepickerComponent,
+  slider: FormSliderComponent
 };
 
 @Directive({

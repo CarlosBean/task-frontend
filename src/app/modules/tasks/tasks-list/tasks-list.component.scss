@@ -1,0 +1,8 @@
+.main-container {
+    margin: 4em 2em 0 2em;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+    justify-items: center;
+    // background-color: var(--gray-200);
+  }

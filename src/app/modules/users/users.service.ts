@@ -7,25 +7,27 @@ import { environment } from 'src/environments/environment';
 })
 export class UsersService {
 
+  endpoint = environment.API_URL + '/usuarios';
+
   constructor(public http: HttpClient) { }
 
   getAll() {
-    return this.http.get(environment.API_URL + '/usuarios');
+    return this.http.get(this.endpoint);
   }
 
   getById(id: number) {
-    return this.http.get(environment.API_URL + '/usuarios/' + id);
+    return this.http.get(`${this.endpoint}/${id}`);
   }
 
   create(user: any) {
-    return this.http.post(environment.API_URL + '/usuarios', user);
+    return this.http.post(this.endpoint, user);
   }
 
   update(user: any) {
-    return this.http.put(environment.API_URL + '/usuarios', user);
+    return this.http.put(this.endpoint, user);
   }
 
   delete(id: number) {
-    return this.http.delete(environment.API_URL + '/usuarios/' + id);
+    return this.http.delete(`${this.endpoint}/${id}`);
   }
 }

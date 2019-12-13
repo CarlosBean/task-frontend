@@ -5,38 +5,76 @@ import { IUser } from '../../models/user';
   selector: 'app-card',
   styleUrls: ['./card.component.scss'],
   template: `
-    <div class="card" [class.card-checked]="user.checked">
+    <div *ngIf="cardType === 'usuario'" class="card" [class.card-checked]="item.checked">
       <div class="card-body">
         <div>
-          <p class="mb-1">{{ user.cedula }}</p>
-          <h6 class="m-0">{{ user.nombre }}</h6>
+          <p class="mb-1">{{ item.cedula }}</p>
+          <h6 class="m-0">{{ item.nombre }}</h6>
         </div>
         <div>
-          <p class="light-text mb-1">{{ user.quantity }} Proyectos</p>
-          <p class="light-text mb-1">{{ user.quantity }} Tareas</p>
-          <small>{{ user.estado ? 'activo' : 'inactivo' }}</small>
+          <p class="light-text mb-1">{{ item.quantity }} Proyectos</p>
+          <p class="light-text mb-1">{{ item.quantity }} Tareas</p>
+          <small>{{ item.estado ? 'activo' : 'inactivo' }}</small>
         </div>
       </div>
       <div class="card-options">
         <input
-          [(ngModel)]="user.checked"
+          [(ngModel)]="item.checked"
           type="checkbox"
           (ngModelChange)="
-            action.emit({ id: user.id, action: 'check', status: user.checked })
+            action.emit({ id: item.id, action: 'check', status: item.checked })
           "
         />
-        <button [disabled]="user.checked">
-          <i class="fas fa-user fa-sm fa-fw"></i>
+        <button [disabled]="item.checked">
+          <i class="fas fa-item fa-sm fa-fw"></i>
         </button>
         <button
-          [disabled]="user.checked"
-          (click)="action.emit({ id: user.id, action: 'edit' })"
+          [disabled]="item.checked"
+          (click)="action.emit({ id: item.id, action: 'edit' })"
         >
           <i class="fas fa-pen fa-sm fa-fw"></i>
         </button>
         <button
-          [disabled]="user.checked"
-          (click)="action.emit({ id: user.id, action: 'delete' })"
+          [disabled]="item.checked"
+          (click)="action.emit({ id: item.id, action: 'delete' })"
+        >
+          <i class="fas fa-times fa-sm fa-fw"></i>
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="cardType === 'proyecto' || cardType === 'tarea'" class="card" [class.card-checked]="item.checked">
+      <div class="card-body">
+        <div>
+          <h6 class="m-0">{{ item.nombre }}</h6>
+          <p class="mb-1">{{ item.alias }}</p>
+        </div>
+        <div>
+          <p class="light-text mb-1">{{ item.fechaInicio | date }} Inicio</p>
+          <p class="light-text mb-1">{{ item.fechaFin | date}} Fin</p>
+          <small>{{ item.estado ? 'activo' : 'inactivo' }}</small>
+        </div>
+      </div>
+      <div class="card-options">
+        <input
+          [(ngModel)]="item.checked"
+          type="checkbox"
+          (ngModelChange)="
+            action.emit({ id: item.id, action: 'check', status: item.checked })
+          "
+        />
+        <button [disabled]="item.checked">
+          <i class="fas fa-item fa-sm fa-fw"></i>
+        </button>
+        <button
+          [disabled]="item.checked"
+          (click)="action.emit({ id: item.id, action: 'edit' })"
+        >
+          <i class="fas fa-pen fa-sm fa-fw"></i>
+        </button>
+        <button
+          [disabled]="item.checked"
+          (click)="action.emit({ id: item.id, action: 'delete' })"
         >
           <i class="fas fa-times fa-sm fa-fw"></i>
         </button>
@@ -45,6 +83,7 @@ import { IUser } from '../../models/user';
   `
 })
 export class CardComponent {
-  @Input() user: IUser;
+  @Input() cardType: string;
+  @Input() item: any;
   @Output() action = new EventEmitter<any>();
 }

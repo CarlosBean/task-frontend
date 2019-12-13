@@ -5,9 +5,9 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProyectService {
+export class TareaService {
 
-  endpoint = environment.API_URL + '/proyectos';
+  endpoint = environment.API_URL + '/tareas';
 
   constructor(public http: HttpClient) { }
 

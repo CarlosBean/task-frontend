@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/shared/models/field-config.interface';
 import { DynamicFormComponent } from 'src/app/shared/components/dynamic-form/dynamic-form.component';
@@ -77,11 +77,22 @@ export class UserUpdateComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.route.data.subscribe(({ user }) => (this.user = user));
+    this.route.data.subscribe(({ user }) => {
+      this.user = user;
+      this.config.push({
+        type: 'slider',
+        label: 'Estado',
+        name: 'estado',
+        placeholder: 'Enter a state',
+        validation: []
+      });
+    });
   }
 
   ngAfterViewInit() {
-    if (this.user) this.updateForm(this.user);
+    if (this.user) {
+      this.updateForm(this.user);
+    }
   }
 
   updateForm(user: any) {
@@ -89,11 +100,14 @@ export class UserUpdateComponent implements AfterViewInit {
     this.form.setValue('nombre', user.nombre);
     this.form.setValue('email', user.email);
     this.form.setValue('password', user.password);
+    this.form.setValue('estado', user.estado);
   }
 
   buildReqBody(): any {
     const body: any = this.form.value;
-    // body.id = this.user.id;
+    if (this.user.id) {
+      body.id = this.user.id
+    }
     return body;
   }
 
@@ -101,10 +115,10 @@ export class UserUpdateComponent implements AfterViewInit {
     if (!this.form.valid) {
       return;
     }
-    // const method = this.post.id ? 'update' : 'update';
-    this.userService.create(this.buildReqBody()).subscribe((res: any) => {
+    const method = this.user.id ? 'update' : 'create';
+    this.userService[method](this.buildReqBody()).subscribe((res: any) => {
       console.log(res);
-      this.alert.success('Operación Exitosa', `Usuario creado correctamente`);
+      this.alert.success('Operación Exitosa', `Usuario ${method} correctamente`);
       this.goBack();
     });
   }

@@ -13,7 +13,7 @@ export class UserListComponent implements OnInit {
   users = [];
 
   configTopbar = {
-    title: 'registered users',
+    title: 'Usuarios Registrados',
     placeholder: 'search account',
     button: { action: 'new', name: 'new' },
     filter: [

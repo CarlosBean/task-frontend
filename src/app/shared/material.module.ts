@@ -13,7 +13,8 @@ import {
     MatGridListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSlideToggleModule
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -40,6 +41,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
+        MatSlideToggleModule
     ]
 })
 export class MaterialModule { }

@@ -1,1 +1,11 @@
-<p>proyects-list works!</p>
+<app-topbar
+  (action)="getTopbarEvt($event)"
+  [config]="configTopbar"
+></app-topbar>
+<div class="header-container">
+  <div class="main-container">
+    <ng-container *ngFor="let user of users; let i = index">
+      <app-card [cardType]="'proyecto'" [item]="user" (action)="getCardEvt($event, i)"></app-card>
+    </ng-container>
+  </div>
+</div>
