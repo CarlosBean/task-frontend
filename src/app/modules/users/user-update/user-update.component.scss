@@ -18,12 +18,13 @@
   }
 }
 
-/* ::ng-deep app-dynamic-form form {
+:host ::ng-deep app-dynamic-form form {
   display: grid;
   grid: auto / 1fr 1fr;
   grid-gap: 15px 30px;
   grid-template-areas:
     'cedula nombre'
     'email password'
+    'rolList estado'
     'submit submit';
-} */
+}

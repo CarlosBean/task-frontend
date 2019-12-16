@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Field } from '../../models/field.interface';
@@ -14,8 +14,8 @@ import { FieldConfig } from '../../models/field-config.interface';
     >
       <mat-label>{{ config.label }}</mat-label>
       <mat-select [formControlName]="config.name" disableRipple multiple>
-        <mat-option *ngFor="let option of config.options" [value]="option">
-          {{ option.nombre }}
+        <mat-option *ngFor="let option of config.options">
+          {{ option[config.field] }}
         </mat-option>
       </mat-select>
 
@@ -25,7 +25,12 @@ import { FieldConfig } from '../../models/field-config.interface';
     </mat-form-field>
   `
 })
-export class FormSelectComponent implements Field {
+export class FormSelectComponent implements Field, OnInit {
+  @HostBinding('style.grid-area') gridArea: string;
   config: FieldConfig;
   group: FormGroup;
+
+  ngOnInit() {
+    this.gridArea = this.config.name;
+  }
 }

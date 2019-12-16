@@ -1,30 +1,31 @@
 :host {
-    background-color: var(--gray-500) !important;
+  background-color: var(--gray-500) !important;
+}
+
+.header-banner {
+  height: 127px;
+  width: 100%;
+  background-color: aquamarine;
+}
+
+.inner-container {
+  padding: 2em 6em;
+  background-color: var(--white) !important;
+
+  h4 {
+    color: var(--green);
+    margin-bottom: 1em;
   }
-  
-  .header-banner {
-    height: 127px;
-    width: 100%;
-    background-color: aquamarine;
-  }
-  
-  .inner-container {
-    padding: 2em 6em;
-    background-color: var(--white) !important;
-  
-    h4 {
-      color: var(--green);
-      margin-bottom: 1em;
-    }
-  }
-  
-  /* ::ng-deep app-dynamic-form form {
-    display: grid;
-    grid: auto / 1fr 1fr;
-    grid-gap: 15px 30px;
-    grid-template-areas:
-      'nombre alias'
-      'descripcion descripcion'
-      'fechaInicio fechaFin'
-      'submit submit';
-  } */
+}
+
+:host ::ng-deep app-dynamic-form form {
+  display: grid;
+  grid: auto / 1fr 1fr;
+  grid-gap: 15px 30px;
+  grid-template-areas:
+    'nombre alias'
+    'descripcion descripcion'
+    'fechaInicio fechaFin'
+    'usuarioList usuarioList'
+    'submit submit';
+}

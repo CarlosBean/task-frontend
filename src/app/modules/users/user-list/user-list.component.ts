@@ -20,19 +20,7 @@ export class UserListComponent implements OnInit {
       { type: 'ASC', name: 'ascending' },
       { type: 'DESC', name: 'descending' }
     ],
-    /* fabs: [
-      { action: 'status', icon: 'fas fa-user-alt-slash', class: 'btn-warning' },
-      { action: 'delete', icon: 'fas fa-trash', class: 'btn-danger' },
-      { action: 'delete', icon: 'fas fa-trash', class: 'btn-danger' },
-      { action: 'delete', icon: 'fas fa-trash', class: 'btn-danger' },
-      { action: 'delete', icon: 'fas fa-trash', class: 'btn-danger' }
-    ] */
-    menus: [
-      /* { rsrc: 'users', name: 'users', selected: true },
-      { rsrc: 'employees', name: 'employees', selected: false },
-      { rsrc: 'admins', name: 'admins', selected: false },
-      { rsrc: 'super', name: 'super', selected: false } */
-    ]
+    menus: []
   };
 
   selected = [];

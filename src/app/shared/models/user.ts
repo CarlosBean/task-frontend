@@ -1,12 +1,3 @@
-interface ISuscription {
-  cedula: string;
-  nombre: string;
-  email: string;
-  password: string;
-  estado: boolean;
-  eliminado: boolean;
-}
-
 export interface IUser {
   id?: string;
   cedula?: string;
@@ -15,6 +6,7 @@ export interface IUser {
   password?: string;
   estado?: boolean;
   eliminado?: boolean;
+  rolList?: any[];
 }
 
 export class User implements IUser {
@@ -26,5 +18,6 @@ export class User implements IUser {
     public password?: string,
     public estado?: boolean,
     public eliminado?: boolean,
+    public rolList?: any[]
   ) {}
 }

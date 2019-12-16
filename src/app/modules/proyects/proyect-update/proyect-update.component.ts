@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { DynamicFormComponent } from 'src/app/shared/components/dynamic-form/dynamic-form.component';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/shared/models/field-config.interface';
@@ -7,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProyectService } from '../proyect.service';
 import { slideRightInOut } from 'src/app/animations/slide-right-in-out';
 import { UsersService } from '../../users/users.service';
+import { IProyecto } from 'src/app/shared/models/proyecto';
 
 @Component({
   selector: 'app-proyect-update',
@@ -90,7 +97,7 @@ export class ProyectUpdateComponent implements AfterViewInit {
     public alert: AlertToastService,
     private proyectService: ProyectService,
     private usuarioService: UsersService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.route.data.subscribe(({ proyecto }) => {
       this.proyecto = proyecto;
@@ -106,12 +113,13 @@ export class ProyectUpdateComponent implements AfterViewInit {
     if (this.proyecto) this.updateForm(this.proyecto);
   }
 
-  updateForm(proyecto: any) {
+  updateForm(proyecto: IProyecto) {
     this.form.setValue('nombre', proyecto.nombre);
     this.form.setValue('descripcion', proyecto.descripcion);
     this.form.setValue('alias', proyecto.alias);
     this.form.setValue('fechaInicio', new Date(proyecto.fechaInicio));
     this.form.setValue('fechaFin', new Date(proyecto.fechaFin));
+    this.form.setValue('usuarioList', proyecto.usuarioList);
   }
 
   buildReqBody(): any {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FieldConfig } from 'src/app/shared/models/field-config.interface';
 import { DynamicFormComponent } from 'src/app/shared/components/dynamic-form/dynamic-form.component';
@@ -7,6 +7,7 @@ import { slideRightInOut } from 'src/app/animations';
 import { UsersService } from '../users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertToastService } from 'src/app/shared/components/alert-toast/alert-toast.service';
+import { RolService } from '../../roles/rol.service';
 
 @Component({
   selector: 'app-user-update',
@@ -23,6 +24,7 @@ import { AlertToastService } from 'src/app/shared/components/alert-toast/alert-t
         </button>
       </div>
       <app-dynamic-form
+        class="form"
         [config]="config"
         #form="dynamicForm"
         (submit)="save($event)"
@@ -65,6 +67,15 @@ export class UserUpdateComponent implements AfterViewInit {
       validation: [Validators.required, Validators.minLength(4)]
     },
     {
+      type: 'select',
+      label: 'Rol',
+      name: 'rolList',
+      field: 'descripcion',
+      options: [],
+      placeholder: 'Select a rol(es)',
+      validation: [Validators.required]
+    },
+    {
       label: 'Submit',
       name: 'submit',
       type: 'button'
@@ -74,39 +85,46 @@ export class UserUpdateComponent implements AfterViewInit {
   constructor(
     public alert: AlertToastService,
     private userService: UsersService,
-    private route: ActivatedRoute,
-    private router: Router
+    private rolService: RolService,
+    private route: ActivatedRoute
   ) {
     this.route.data.subscribe(({ user }) => {
       this.user = user;
-      this.config.push({
-        type: 'slider',
-        label: 'Estado',
-        name: 'estado',
-        placeholder: 'Enter a state',
-        validation: []
-      });
+      if (user.id) {
+        this.config.push({
+          type: 'slider',
+          label: 'Estado',
+          name: 'estado',
+          placeholder: 'Enter a state',
+          validation: []
+        });
+      }
+    });
+
+    this.rolService.getAll().subscribe((res: any) => {
+      this.config[4].options = res.content;
     });
   }
 
   ngAfterViewInit() {
-    if (this.user) {
+    if (this.user.id) {
       this.updateForm(this.user);
     }
   }
 
-  updateForm(user: any) {
+  updateForm(user: IUser) {
     this.form.setValue('cedula', user.cedula);
     this.form.setValue('nombre', user.nombre);
     this.form.setValue('email', user.email);
     this.form.setValue('password', user.password);
     this.form.setValue('estado', user.estado);
+    this.form.setValue('rolList', user.rolList);
   }
 
   buildReqBody(): any {
     const body: any = this.form.value;
     if (this.user.id) {
-      body.id = this.user.id
+      body.id = this.user.id;
     }
     return body;
   }
@@ -117,8 +135,10 @@ export class UserUpdateComponent implements AfterViewInit {
     }
     const method = this.user.id ? 'update' : 'create';
     this.userService[method](this.buildReqBody()).subscribe((res: any) => {
-      console.log(res);
-      this.alert.success('Operación Exitosa', `Usuario ${method} correctamente`);
+      this.alert.success(
+        'Operación Exitosa',
+        `Usuario ${method} correctamente`
+      );
       this.goBack();
     });
   }
