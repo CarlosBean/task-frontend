@@ -1,6 +1,6 @@
 <h1 class="mb-3">Don't worry</h1>
 <p class="light-text mb-5">We'll send you a reset link</p>
-<form name="forgotForm" novalidate [formGroup]="forgotForm">
+<form name="forgotForm" novalidate [formGroup]="forgotForm" (ngSubmit)="recoverPass()">
   <mat-form-field class="w-100 mb-3" floatLabel="always">
     <mat-label>Email</mat-label>
     <input

@@ -2,20 +2,16 @@
 <p class="light-text mb-5">Welcome back</p>
 <form name="loginForm" novalidate [formGroup]="loginForm" (ngSubmit)="login()">
   <mat-form-field class="w-100 mb-3" floatLabel="always">
-    <mat-label>Email</mat-label>
+    <mat-label>Document</mat-label>
     <input
       matInput
-      placeholder="Enter your email"
-      formControlName="email"
+      placeholder="Enter your document"
+      formControlName="cedula"
       autocomplete="off"
     />
 
-    <mat-error *ngIf="loginForm.get('email').errors?.required">
-      Email is <strong>required</strong>
-    </mat-error>
-
-    <mat-error *ngIf="loginForm.get('email').errors?.email">
-      Invalid email address
+    <mat-error *ngIf="loginForm.get('cedula').errors?.required">
+      Document is <strong>required</strong>
     </mat-error>
   </mat-form-field>
 
