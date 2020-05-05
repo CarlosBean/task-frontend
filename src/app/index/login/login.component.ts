@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required]]
   });
 
+  log: any;
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -29,12 +31,15 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.log = this.toast.info('Logging...', '', false);
+
     this.accountService.login(this.loginForm.value).subscribe(
       (res: any) => {
-        this.toast.success('Login Successful', `Your session has been started`);
+        this.toast.close(this.log);
         this.router.navigateByUrl('/dashboard');
       },
       (err: any) => {
+        this.toast.close(this.log);
         this.toast.danger('Incorrect Credentials', `There's an error with the credentials`);
       }
     );

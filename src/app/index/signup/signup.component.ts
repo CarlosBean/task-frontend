@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
     password: ['', [Validators.required]]
   });
 
+  log: any;
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -31,9 +33,11 @@ export class SignupComponent implements OnInit {
       return;
     }
 
+    this.log = this.toast.info('Creating account...', '', false);
+
     this.accountService.signup(this.signupForm.value).subscribe(
       (res: any) => {
-        this.toast.success('Congratulations', 'Your account has been created.');
+        this.toast.close(this.log);
         this.router.navigateByUrl('/dashboard');
       },
       (err: any) => {

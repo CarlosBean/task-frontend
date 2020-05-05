@@ -12,6 +12,8 @@ export class ForgotPassComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
   });
 
+  log: any;
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -24,9 +26,12 @@ export class ForgotPassComponent implements OnInit {
     if (this.forgotForm.invalid) {
       return;
     }
+    
+    const email = this.forgotForm.get('email').value
+    this.log = this.toast.info('Processing...', '', false);
 
-    this.accountService.initRecoverPass(this.forgotForm.get('email').value)
-      .subscribe((res: any) => {
+    this.accountService.initRecoverPass(email).subscribe((res: any) => {
+        this.toast.close(this.log);
         this.toast.success('Request Sent', 'A mail with recover information was sent to your email address.')
       }, (err: any) => {
         if (err.status === 404) {
