@@ -1,8 +1,5 @@
 .custom-alert {
-    position: fixed;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 1em 0;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -13,7 +10,7 @@
     -webkit-border-radius: 50px;
     width: 30.5rem;
     height: 80px;
-    z-index: 200;
+    opacity: 1;
 }
 
 .success {
@@ -29,6 +26,9 @@
 .warning {
     color: var(--dark);
     background-color: var(--warning);
+    h6 {
+        color: var(--dark);
+    }
 }
 
 .info {
@@ -45,7 +45,8 @@
     height: 66px;
 }
 
-.info-alert h3,
+.info-alert h6,
 .info-alert p {
+    color: var(--white);
     margin: 0.5em 0;
 }

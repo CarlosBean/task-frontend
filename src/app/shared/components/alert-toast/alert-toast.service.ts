@@ -31,32 +31,38 @@ export class AlertToastService {
 
     this.applicationRef.attachView(component.hostView);
 
-    setTimeout(() => {
-      this.applicationRef.detachView(component.hostView);
-      component.destroy();
-    }, 2000);
+    if (config.autoclose) {
+      setTimeout(() => this.close(component), 2000);
+    }
 
     component.instance.config = config;
-    document.body.appendChild(alertbox);
+    const container = document.getElementById('alert-container');
+    container.appendChild(alertbox);
+    return component;
   }
 
-  success(title: string, text: string) {
-    const alert = new CustomAlert('success', title, text, this.icons.success);
-    this.show(alert);
+  close(component: any) {
+    this.applicationRef.detachView(component.hostView);
+    component.destroy();
   }
 
-  danger(title: string, text: string) {
-    const alert = new CustomAlert('danger', title, text, this.icons.danger);
-    this.show(alert);
+  success(title: string, text: string, autoclose = true) {
+    const alert = new CustomAlert('success', title, text, autoclose, this.icons.success);
+    return this.show(alert);
   }
 
-  warning(title: string, text: string) {
-    const alert = new CustomAlert('warning', title, text, this.icons.warning);
-    this.show(alert);
+  danger(title: string, text: string, autoclose = true) {
+    const alert = new CustomAlert('danger', title, text, autoclose, this.icons.danger);
+    return this.show(alert);
   }
 
-  info(title: string, text: string) {
-    const alert = new CustomAlert('info', title, text, this.icons.info);
-    this.show(alert);
+  warning(title: string, text: string, autoclose = true) {
+    const alert = new CustomAlert('warning', title, text, autoclose, this.icons.warning);
+    return this.show(alert);
+  }
+
+  info(title: string, text: string, autoclose = true) {
+    const alert = new CustomAlert('info', title, text, autoclose, this.icons.info);
+    return this.show(alert);
   }
 }

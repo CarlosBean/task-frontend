@@ -4,6 +4,7 @@ export interface ICustomAlert {
     alertType: AlertType;
     title: string;
     text: string;
+    autoclose: boolean;
     icon?: string;
 }
 
@@ -12,6 +13,7 @@ export class CustomAlert implements ICustomAlert {
         public alertType: AlertType,
         public title: string,
         public text: string,
-        public icon?: string
+        public autoclose: boolean,
+        public icon?: string,
     ) { }
 }

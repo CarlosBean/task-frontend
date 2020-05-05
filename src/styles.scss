@@ -243,3 +243,12 @@ input[type='checkbox'] {
     transition: 200ms ease-out;
   }
 }
+
+/* ALERT CONTAINER */
+#alert-container {
+  position: fixed;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 200;
+}
