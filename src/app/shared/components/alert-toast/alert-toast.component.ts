@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ICustomAlert } from '../../models/custom-alert.model';
+import { slideToast } from 'src/app/animations';
 
 @Component({
   selector: 'app-alert',
   styleUrls: ['./alert-toast.component.scss'],
+  animations: [slideToast],
+  host: { '[@slideToast]': '' },
   template: `
     <div class="custom-alert" [ngClass]="config.alertType">
       <span class="icon-alert">
